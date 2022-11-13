@@ -15,11 +15,9 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Views
 {
     public partial class BookingForm : Form
     {
-        DateTime startDate;
-        DateTime endDate;
-        int customerID;
-        int roomID;
-        int noOfPersons;
+        int customerID = 0;
+        int roomID = 0;
+        int noOfPersons = 1;
         public BookingForm()
         {
             InitializeComponent();
@@ -29,24 +27,42 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Views
         {
             customerID = Convert.ToInt32(CustomerList.SelectedValue);
             roomID = Convert.ToInt32(RoomList.SelectedValue);
+            if (roomID == 0 || customerID == 0 || StartDatePicker.Text == EndDatePicker.Text)
+                MessageBox.Show("Du måste välja en kund, ett rum och korrekta datum");
+            else
+            {
+                AppManager manager = new AppManager();
+                manager.CreateBooking(customerID,roomID, Convert.ToDateTime(StartDatePicker.Text), Convert.ToDateTime(EndDatePicker.Text));
+            }
         }
 
         private void StartDatePicker_ValueChanged(object sender, EventArgs e)
         {
-            startDate = Convert.ToDateTime(StartDatePicker.Text);
+            //startDate = Convert.ToDateTime(StartDatePicker.Text);
             
         }
 
         private void EndDatePicker_ValueChanged(object sender, EventArgs e)
         {
-            endDate = Convert.ToDateTime(EndDatePicker.Text);
+            //endDate = Convert.ToDateTime(EndDatePicker.Text);
             
+        }
+        private void BookingForm_Load(object sender, EventArgs e)
+        {
+            FillPersonBox();
+        }
+        private void FillPersonBox()
+        {
+            NoOfPersonBox.Items.Add("1");
+            NoOfPersonBox.Items.Add("2");
+            NoOfPersonBox.Items.Add("3");
+            NoOfPersonBox.Items.Add("4");
+            NoOfPersonBox.Text = "1";
         }
 
         private void NoOfPersonBox_TextChanged(object sender, EventArgs e)
         {
             noOfPersons = int.Parse(NoOfPersonBox.Text);
-            FillRoomsList();
         }
 
         private void CustomerSearchText_TextChanged(object sender, EventArgs e)
@@ -64,25 +80,15 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Views
         private void FillRoomsList()
         {
             AppManager manager = new AppManager();
-            List<Room> roomlist = manager.AvailableRooms(startDate,endDate,noOfPersons);
+            List<Room> roomlist = manager.AvailableRooms(Convert.ToDateTime(StartDatePicker.Text), Convert.ToDateTime(EndDatePicker.Text), noOfPersons);
             RoomList.ValueMember = "RoomID";
             RoomList.DisplayMember = "Name";
             RoomList.DataSource = roomlist;
         }
-        private void FillPersonBox()
-        {
-            NoOfPersonBox.Items.Add("1");
-            NoOfPersonBox.Items.Add("2");
-            NoOfPersonBox.Items.Add("3");
-            NoOfPersonBox.Items.Add("4");
-            NoOfPersonBox.Text = "1";
-        }
 
-        private void BookingForm_Load(object sender, EventArgs e)
+        private void SearchRoomButton_Click(object sender, EventArgs e)
         {
-            FillPersonBox();
             FillRoomsList();
-            FillCustomersList();
         }
     }
 }

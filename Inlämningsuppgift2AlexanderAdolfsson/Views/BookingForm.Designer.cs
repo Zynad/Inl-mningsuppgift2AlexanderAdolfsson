@@ -41,6 +41,7 @@
             this.CustomerList = new System.Windows.Forms.ListBox();
             this.CustomerLabel = new System.Windows.Forms.Label();
             this.NewBookingButton = new System.Windows.Forms.Button();
+            this.SearchRoomButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CustomerSearchText
@@ -148,7 +149,7 @@
             // 
             // NewBookingButton
             // 
-            this.NewBookingButton.Location = new System.Drawing.Point(189, 342);
+            this.NewBookingButton.Location = new System.Drawing.Point(288, 342);
             this.NewBookingButton.Name = "NewBookingButton";
             this.NewBookingButton.Size = new System.Drawing.Size(75, 23);
             this.NewBookingButton.TabIndex = 8;
@@ -156,11 +157,22 @@
             this.NewBookingButton.UseVisualStyleBackColor = true;
             this.NewBookingButton.Click += new System.EventHandler(this.NewBookingButton_Click);
             // 
+            // SearchRoomButton
+            // 
+            this.SearchRoomButton.Location = new System.Drawing.Point(189, 342);
+            this.SearchRoomButton.Name = "SearchRoomButton";
+            this.SearchRoomButton.Size = new System.Drawing.Size(93, 23);
+            this.SearchRoomButton.TabIndex = 8;
+            this.SearchRoomButton.Text = "Sök lediga rum";
+            this.SearchRoomButton.UseVisualStyleBackColor = true;
+            this.SearchRoomButton.Click += new System.EventHandler(this.SearchRoomButton_Click);
+            // 
             // BookingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(442, 404);
+            this.Controls.Add(this.SearchRoomButton);
             this.Controls.Add(this.NewBookingButton);
             this.Controls.Add(this.EndDateLabel);
             this.Controls.Add(this.StartDateLabel);
@@ -197,5 +209,6 @@
         private System.Windows.Forms.ListBox CustomerList;
         private System.Windows.Forms.Label CustomerLabel;
         private System.Windows.Forms.Button NewBookingButton;
+        private System.Windows.Forms.Button SearchRoomButton;
     }
 }

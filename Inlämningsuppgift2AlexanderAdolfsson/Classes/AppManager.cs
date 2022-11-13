@@ -190,7 +190,7 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Classes
         private List<Booking> SortBookingTime(DateTime startDate,DateTime endDate)
         {
             List<Booking> allBookings = bookingRepo.GetAllBookings();
-            List<Booking> sortedBookings = allBookings.Where(b => !(b.StartDate <= endDate || b.StartDate >= startDate) && !(b.EndDate <= endDate || b.EndDate >= startDate)).ToList();
+            List<Booking> sortedBookings = allBookings.Where(b => (b.StartDate <= endDate || b.StartDate >= startDate) && (b.EndDate <= endDate || b.EndDate >= startDate)).ToList();
             return sortedBookings;
         }
         public void CreateBooking(int customerID,int roomID,DateTime startDate,DateTime endDate)
