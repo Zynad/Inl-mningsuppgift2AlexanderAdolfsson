@@ -15,6 +15,7 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Classes
         CustomerRepo customerRepo = new CustomerRepo();
         RoomRepo roomRepo = new RoomRepo();
         BookingRepo bookingRepo = new BookingRepo();
+        InvoiceRepo invoiceRepo = new InvoiceRepo();
         public void OpenCustomerForm()
         {
             CustomerForm customerForm = new CustomerForm();
@@ -134,13 +135,21 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Classes
         }
         public void TryCustomerDelete(int customerID)
         {
+            List<Booking> bookings = new List<Booking>();
             if (customerID == 0)
                 MessageBox.Show("Du måste välja en kund att uppdatera");
 
             else
             {
-                customerRepo.DeleteCustomer(customerID);
-                MessageBox.Show("Kund borttagen i systemet");
+                if (bookings.Any(b => b.CustomerID == customerID))
+                    MessageBox.Show("Du kan inte ta bort en kund som är bokad på ett rum");
+
+                else
+                {
+                    customerRepo.DeleteCustomer(customerID);
+                    MessageBox.Show("Kund borttagen i systemet");
+                }
+                
             }
                 
         }
@@ -183,6 +192,26 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Classes
             List<Booking> allBookings = bookingRepo.GetAllBookings();
             List<Booking> sortedBookings = allBookings.Where(b => !(b.StartDate <= endDate || b.StartDate >= startDate) && !(b.EndDate <= endDate || b.EndDate >= startDate)).ToList();
             return sortedBookings;
+        }
+        public void CreateBooking(int customerID,int roomID,DateTime startDate,DateTime endDate)
+        {
+            Invoice invoice = new Invoice();
+            invoice.IssueDate = DateTime.Now;
+            invoice.ExpireDate = DateTime.Now.AddDays(10);
+            invoice.IsPayed = false;
+            invoiceRepo.InsertInvoice(invoice);
+
+            List<Invoice> invoiceList = invoiceRepo.GetAllInvoice();
+            int latestInvoiceID = invoiceList.Max(b => b.InvoiceID);
+
+            Booking booking = new Booking();
+            booking.InvoiceID = latestInvoiceID;
+            booking.CustomerID = customerID;
+            booking.RoomID = roomID;
+            booking.StartDate = startDate;
+            booking.EndDate = endDate;
+
+            bookingRepo.InsertBooking(booking);
         }
 
     }

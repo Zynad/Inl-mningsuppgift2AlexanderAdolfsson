@@ -18,5 +18,27 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Repository
         {
             return _dbConnection.Booking.ToList();
         }
+        public void InsertBooking(Booking booking)
+        {
+            _dbConnection.Booking.Add(booking);
+            _dbConnection.SaveChanges();
+        }
+        public Booking GetBooking(int bookingID)
+        {
+            return _dbConnection.Booking.Find(bookingID);
+        }
+
+        public void DeleteBooking(int bookingID)
+        {
+            Booking booking = GetBooking(bookingID);
+            _dbConnection.Booking.Remove(booking);
+            _dbConnection.SaveChanges();
+        }
+        public void UpdateBooking(Booking booking)
+        {
+            Booking orgBooking = GetBooking(booking.BookingID);
+            _dbConnection.Entry(orgBooking).CurrentValues.SetValues(booking);
+            _dbConnection.SaveChanges();
+        }
     }
 }
