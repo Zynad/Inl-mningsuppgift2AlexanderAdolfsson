@@ -85,6 +85,7 @@
             this.Controls.Add(this.CustomerButton);
             this.Name = "AdminForm";
             this.Text = "AdminForm";
+            this.Load += new System.EventHandler(this.AdminForm_Load);
             this.ResumeLayout(false);
 
         }

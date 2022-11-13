@@ -38,18 +38,18 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Views
 
         private void StartDatePicker_ValueChanged(object sender, EventArgs e)
         {
-            //startDate = Convert.ToDateTime(StartDatePicker.Text);
             
         }
 
         private void EndDatePicker_ValueChanged(object sender, EventArgs e)
         {
-            //endDate = Convert.ToDateTime(EndDatePicker.Text);
+            
             
         }
         private void BookingForm_Load(object sender, EventArgs e)
         {
             FillPersonBox();
+            AppManager.InvoiceExpires();
         }
         private void FillPersonBox()
         {

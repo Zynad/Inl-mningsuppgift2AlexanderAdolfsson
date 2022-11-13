@@ -35,6 +35,12 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Repository
             _dbConnection.Entry(orgInvoice).CurrentValues.SetValues(invoice);
             _dbConnection.SaveChanges();
         }
+        public void DeleteInvoice(int invoiceID)
+        {
+            Invoice invoice = GetInvoice(invoiceID);
+            _dbConnection.Invoice.Remove(invoice);
+            _dbConnection.SaveChanges();
+        }
 
     }
 }

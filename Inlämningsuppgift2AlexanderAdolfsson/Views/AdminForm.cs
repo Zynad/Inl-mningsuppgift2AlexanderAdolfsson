@@ -33,5 +33,10 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Views
         {
             manager.OpenInvoiceForm();
         }
+
+        private void AdminForm_Load(object sender, EventArgs e)
+        {
+            AppManager.InvoiceExpires();
+        }
     }
 }

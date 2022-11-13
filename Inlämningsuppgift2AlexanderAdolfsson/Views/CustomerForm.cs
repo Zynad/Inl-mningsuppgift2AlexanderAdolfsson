@@ -42,6 +42,7 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Views
         private void CustomerForm_Load(object sender, EventArgs e)
         {
             UpdateForm();
+            AppManager.InvoiceExpires();
         }
         private void CustomerList_DoubleClick(object sender, EventArgs e)
         {

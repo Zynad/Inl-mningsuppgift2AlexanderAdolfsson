@@ -189,8 +189,12 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Classes
         }
         private List<Booking> SortBookingTime(DateTime startDate,DateTime endDate)
         {
+            
             List<Booking> allBookings = bookingRepo.GetAllBookings();
-            List<Booking> sortedBookings = allBookings.Where(b => (b.StartDate <= endDate || b.StartDate >= startDate) && (b.EndDate <= endDate || b.EndDate >= startDate)).ToList();
+            List<Booking> sortedBookings = allBookings.Where(b => 
+            (startDate >= b.StartDate && startDate <= b.EndDate) || 
+            (endDate >= b.StartDate && endDate <= b.EndDate) || 
+            (startDate <= b.StartDate && endDate >= b.EndDate)).ToList();
             return sortedBookings;
         }
         public void CreateBooking(int customerID,int roomID,DateTime startDate,DateTime endDate)
@@ -212,6 +216,54 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Classes
             booking.EndDate = endDate;
 
             bookingRepo.InsertBooking(booking);
+            MessageBox.Show("Bokning är gjord och fakturan är skickad");
+        }
+        public static void InvoiceExpires()
+        {
+            InvoiceRepo invoiceRepo = new InvoiceRepo();
+            BookingRepo bookingRepo = new BookingRepo();
+            List<Invoice> allInvoices = invoiceRepo.GetAllInvoice();
+            List<Invoice> expiredInvoices = allInvoices.Where(i => i.ExpireDate < DateTime.Now && i.IsPayed == false).ToList();
+            List<Booking> allBookings = bookingRepo.GetAllBookings();
+            List<Booking> expiredBookings = allBookings.Where(b => expiredInvoices.Select(e => e.InvoiceID).Contains(b.InvoiceID)).ToList();
+            foreach (Booking booking in expiredBookings)
+            {
+                bookingRepo.DeleteBooking(booking.BookingID);
+            }
+            foreach (Invoice invoice in expiredInvoices)
+            {
+                invoiceRepo.DeleteInvoice(invoice.InvoiceID);
+            }
+        }
+        public List<Invoice> InvoiceHandlerList(string searchCondition)
+        {
+            List<Invoice> allInvoices = invoiceRepo.GetAllInvoice();
+            if(searchCondition == "Alla fakturor")
+            {
+                return allInvoices;
+            }
+            else if(searchCondition == "Betalda fakturor")
+            {
+                List<Invoice> payedInvoices = allInvoices.Where(x => x.IsPayed == true).ToList();
+                return payedInvoices;
+            }
+            else if(searchCondition == "Obetalda fakturor")
+            {
+                List<Invoice> unPayedInvoices = allInvoices.Where(x => x.IsPayed == false).ToList();
+                return unPayedInvoices;
+            }
+            else
+            {
+                return null;
+                MessageBox.Show("Någonting gick fel, försök igen");
+            }
+        }
+        public void UpdateInvoicePayed(int invoiceID,bool isPayed)
+        {
+            Invoice invoice = invoiceRepo.GetInvoice(invoiceID);
+            invoice.IsPayed = isPayed;
+            invoiceRepo.UpdateInvoice(invoice);
+            MessageBox.Show("Din faktura är uppdaterad");
         }
 
     }
