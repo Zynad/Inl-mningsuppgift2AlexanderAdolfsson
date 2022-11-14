@@ -20,6 +20,7 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Models
         public int RoomID { get; set; }
         public System.DateTime StartDate { get; set; }
         public System.DateTime EndDate { get; set; }
+        public int NoOfPersons { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Invoice Invoice { get; set; }

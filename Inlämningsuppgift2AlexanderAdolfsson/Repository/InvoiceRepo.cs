@@ -17,16 +17,16 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Repository
         }
         public List<Invoice> GetAllInvoice()
         {
-            return _dbConnection.Invoice.ToList();
+            return _dbConnection.Invoices.ToList();
         }
         public Invoice GetInvoice(int invoiceID)
         {
-            return _dbConnection.Invoice.Find(invoiceID);
+            return _dbConnection.Invoices.Find(invoiceID);
         }
 
         public void InsertInvoice(Invoice invoice)
         {
-            _dbConnection.Invoice.Add(invoice);
+            _dbConnection.Invoices.Add(invoice);
             _dbConnection.SaveChanges();
         }
         public void UpdateInvoice(Invoice invoice)
@@ -38,7 +38,7 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Repository
         public void DeleteInvoice(int invoiceID)
         {
             Invoice invoice = GetInvoice(invoiceID);
-            _dbConnection.Invoice.Remove(invoice);
+            _dbConnection.Invoices.Remove(invoice);
             _dbConnection.SaveChanges();
         }
 

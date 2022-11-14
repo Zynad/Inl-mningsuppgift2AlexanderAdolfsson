@@ -31,6 +31,16 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Classes
             InvoiceForm invoiceForm = new InvoiceForm();
             invoiceForm.ShowDialog();
         }
+        public void OpenHandleBookingForm()
+        {
+            HandleBookingForm handleBookingForm = new HandleBookingForm();
+            handleBookingForm.ShowDialog();
+        }
+        public void OpenUpdateBookingForm(int bookingID)
+        {
+            UpdateBookingForm updateBookingForm = new UpdateBookingForm(bookingID);
+            updateBookingForm.ShowDialog();
+        }
         public void TryCustomerAdd(string name,string email,string phone)
         {
             List<Customer> customerList = customerRepo.GetAllCustomers();
@@ -197,7 +207,7 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Classes
             (startDate <= b.StartDate && endDate >= b.EndDate)).ToList();
             return sortedBookings;
         }
-        public void CreateBooking(int customerID,int roomID,DateTime startDate,DateTime endDate)
+        public void CreateBooking(int customerID,int roomID,DateTime startDate,DateTime endDate,int noOfPersons)
         {
             Invoice invoice = new Invoice();
             invoice.IssueDate = DateTime.Now;
@@ -214,6 +224,7 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Classes
             booking.RoomID = roomID;
             booking.StartDate = startDate;
             booking.EndDate = endDate;
+            booking.NoOfPersons = noOfPersons;
 
             bookingRepo.InsertBooking(booking);
             MessageBox.Show("Bokning är gjord och fakturan är skickad");

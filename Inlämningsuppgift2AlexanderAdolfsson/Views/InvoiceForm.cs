@@ -51,7 +51,7 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Views
         {
             InvoiceRepo repo = new InvoiceRepo();
             Invoice invoice = repo.GetInvoice(Convert.ToInt32(InvoiceListbox.SelectedValue));
-            Booking booking = invoice.Booking.FirstOrDefault();
+            Booking booking = invoice.Bookings.FirstOrDefault();
             InvoiceIDLabel.Text = $"Fakturanummer : {invoice.InvoiceID}";
             InvoiceIssueLabel.Text = $"Fakturadatum : {invoice.IssueDate.ToShortDateString()}";
             InvoiceExpireLabel.Text = $"Betalas senast : {invoice.ExpireDate.ToShortDateString()}";

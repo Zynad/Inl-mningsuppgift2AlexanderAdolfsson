@@ -18,20 +18,20 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Repository
 
         public List<Customer> GetAllCustomers()
         {
-            return _dbConnection.Customer.ToList();
+            return _dbConnection.Customers.ToList();
         }
         public List<Customer> GetAllCustomers(string searchCondition)
         {
-            return _dbConnection.Customer.Where(c => c.Name.ToLower().Contains(searchCondition.ToLower())).ToList();
+            return _dbConnection.Customers.Where(c => c.Name.ToLower().Contains(searchCondition.ToLower())).ToList();
         }
         public Customer GetCustomer(int customerID)
         {
-            return _dbConnection.Customer.Find(customerID);
+            return _dbConnection.Customers.Find(customerID);
         }
         public void DeleteCustomer(int customerID)
         {
             Customer customer = GetCustomer(customerID);
-            _dbConnection.Customer.Remove(customer);
+            _dbConnection.Customers.Remove(customer);
             _dbConnection.SaveChanges();
         }
         public void UpdateCustomer(Customer customer)
@@ -42,7 +42,7 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Repository
         }
         public void InsertCustomer(Customer customer)
         {
-            _dbConnection.Customer.Add(customer);
+            _dbConnection.Customers.Add(customer);
             _dbConnection.SaveChanges();
         }
     }

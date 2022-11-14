@@ -72,7 +72,7 @@
             this.HandleBookingButton.TabIndex = 1;
             this.HandleBookingButton.Text = "Bokningshantering";
             this.HandleBookingButton.UseVisualStyleBackColor = true;
-            this.HandleBookingButton.Click += new System.EventHandler(this.BookingButton_Click);
+            this.HandleBookingButton.Click += new System.EventHandler(this.HandleBookingButton_Click);
             // 
             // AdminForm
             // 

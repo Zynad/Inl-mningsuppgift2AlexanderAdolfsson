@@ -25,10 +25,10 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Booking> Booking { get; set; }
-        public virtual DbSet<Customer> Customer { get; set; }
-        public virtual DbSet<Invoice> Invoice { get; set; }
-        public virtual DbSet<Room> Room { get; set; }
-        public virtual DbSet<RoomType> RoomType { get; set; }
+        public virtual DbSet<Booking> Bookings { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Invoice> Invoices { get; set; }
+        public virtual DbSet<Room> Rooms { get; set; }
+        public virtual DbSet<RoomType> RoomTypes { get; set; }
     }
 }

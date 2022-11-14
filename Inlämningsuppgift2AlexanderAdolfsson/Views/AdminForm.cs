@@ -38,5 +38,10 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Views
         {
             AppManager.InvoiceExpires();
         }
+
+        private void HandleBookingButton_Click(object sender, EventArgs e)
+        {
+            manager.OpenHandleBookingForm();
+        }
     }
 }

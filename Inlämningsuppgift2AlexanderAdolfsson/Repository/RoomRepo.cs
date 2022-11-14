@@ -16,7 +16,7 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Repository
         }
         public List<Room> GetAllRooms()
         {
-            return _dbConnection.Room.ToList();
+            return _dbConnection.Rooms.ToList();
         }
     }
 }

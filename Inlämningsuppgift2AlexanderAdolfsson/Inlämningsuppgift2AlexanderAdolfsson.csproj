@@ -124,6 +124,12 @@
     <Compile Include="Views\InvoiceForm.Designer.cs">
       <DependentUpon>InvoiceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UpdateBookingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UpdateBookingForm.Designer.cs">
+      <DependentUpon>UpdateBookingForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -148,6 +154,9 @@
     <EmbeddedResource Include="Views\InvoiceForm.resx">
       <DependentUpon>InvoiceForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UpdateBookingForm.resx">
+      <DependentUpon>UpdateBookingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="Models\HotelModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>HotelModel.Designer.cs</LastGenOutput>
@@ -170,10 +179,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Models\HotelModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>HotelModel.Context.cs</LastGenOutput>
       <DependentUpon>HotelModel.edmx</DependentUpon>
+      <LastGenOutput>HotelModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\HotelModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -181,9 +193,5 @@
       <LastGenOutput>HotelModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

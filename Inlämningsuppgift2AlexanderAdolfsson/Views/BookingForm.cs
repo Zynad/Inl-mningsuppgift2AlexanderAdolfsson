@@ -32,7 +32,7 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Views
             else
             {
                 AppManager manager = new AppManager();
-                manager.CreateBooking(customerID,roomID, Convert.ToDateTime(StartDatePicker.Text), Convert.ToDateTime(EndDatePicker.Text));
+                manager.CreateBooking(customerID,roomID, Convert.ToDateTime(StartDatePicker.Text), Convert.ToDateTime(EndDatePicker.Text),int.Parse(NoOfPersonBox.Text));
             }
         }
 
