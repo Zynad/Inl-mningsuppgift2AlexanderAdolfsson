@@ -73,7 +73,7 @@
             this.CustomerNameText.Location = new System.Drawing.Point(193, 66);
             this.CustomerNameText.Name = "CustomerNameText";
             this.CustomerNameText.Size = new System.Drawing.Size(169, 20);
-            this.CustomerNameText.TabIndex = 3;
+            this.CustomerNameText.TabIndex = 1;
             // 
             // CustomerPhoneLabel
             // 
@@ -105,7 +105,7 @@
             this.CustomerEmailText.Location = new System.Drawing.Point(193, 119);
             this.CustomerEmailText.Name = "CustomerEmailText";
             this.CustomerEmailText.Size = new System.Drawing.Size(169, 20);
-            this.CustomerEmailText.TabIndex = 3;
+            this.CustomerEmailText.TabIndex = 2;
             // 
             // AddButton
             // 

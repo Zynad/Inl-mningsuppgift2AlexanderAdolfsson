@@ -56,7 +56,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\AppManager.cs" />
-    <Compile Include="Classes\BookingManager.cs" />
     <Compile Include="Models\Booking.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>

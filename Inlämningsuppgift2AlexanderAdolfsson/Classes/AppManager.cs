@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Inlämningsuppgift2AlexanderAdolfsson.Models;
+﻿using Inlämningsuppgift2AlexanderAdolfsson.Models;
 using Inlämningsuppgift2AlexanderAdolfsson.Repository;
 using Inlämningsuppgift2AlexanderAdolfsson.Views;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Inlämningsuppgift2AlexanderAdolfsson.Classes
 {

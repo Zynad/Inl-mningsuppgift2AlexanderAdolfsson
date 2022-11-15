@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Inlämningsuppgift2AlexanderAdolfsson.Repository
 {
-    internal class RoomTypeRepo
+    public class RoomTypeRepo
     {
     }
 }
