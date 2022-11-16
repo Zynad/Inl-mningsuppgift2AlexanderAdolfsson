@@ -143,7 +143,7 @@ namespace Inlämningsuppgift2AlexanderAdolfsson.Classes
         }
         public void TryCustomerDelete(int customerID)
         {
-            List<Booking> bookings = new List<Booking>();
+            List<Booking> bookings = bookingRepo.GetAllBookings();
             if (customerID == 0)
                 MessageBox.Show("Du måste välja en kund att uppdatera");
 

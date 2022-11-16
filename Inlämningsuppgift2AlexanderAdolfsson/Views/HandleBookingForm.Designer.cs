@@ -48,57 +48,73 @@
             this.StartDate,
             this.EndDate,
             this.InvoicePayed});
-            this.BookingGrid.Location = new System.Drawing.Point(37, 81);
+            this.BookingGrid.Location = new System.Drawing.Point(49, 100);
+            this.BookingGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BookingGrid.MultiSelect = false;
             this.BookingGrid.Name = "BookingGrid";
             this.BookingGrid.ReadOnly = true;
-            this.BookingGrid.Size = new System.Drawing.Size(540, 462);
+            this.BookingGrid.RowHeadersWidth = 51;
+            this.BookingGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.BookingGrid.Size = new System.Drawing.Size(720, 569);
             this.BookingGrid.TabIndex = 0;
             this.BookingGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // BookingID
             // 
             this.BookingID.HeaderText = "BookingID";
+            this.BookingID.MinimumWidth = 6;
             this.BookingID.Name = "BookingID";
             this.BookingID.ReadOnly = true;
             this.BookingID.Visible = false;
+            this.BookingID.Width = 125;
             // 
             // CustomerName
             // 
             this.CustomerName.HeaderText = "Kundnamn";
+            this.CustomerName.MinimumWidth = 6;
             this.CustomerName.Name = "CustomerName";
             this.CustomerName.ReadOnly = true;
+            this.CustomerName.Width = 125;
             // 
             // RoomNumber
             // 
             this.RoomNumber.HeaderText = "Rumsnummer";
+            this.RoomNumber.MinimumWidth = 6;
             this.RoomNumber.Name = "RoomNumber";
             this.RoomNumber.ReadOnly = true;
+            this.RoomNumber.Width = 125;
             // 
             // StartDate
             // 
             this.StartDate.HeaderText = "Bokad från";
+            this.StartDate.MinimumWidth = 6;
             this.StartDate.Name = "StartDate";
             this.StartDate.ReadOnly = true;
+            this.StartDate.Width = 125;
             // 
             // EndDate
             // 
             this.EndDate.HeaderText = "Bokad till";
+            this.EndDate.MinimumWidth = 6;
             this.EndDate.Name = "EndDate";
             this.EndDate.ReadOnly = true;
+            this.EndDate.Width = 125;
             // 
             // InvoicePayed
             // 
             this.InvoicePayed.HeaderText = "Fakturan betald";
+            this.InvoicePayed.MinimumWidth = 6;
             this.InvoicePayed.Name = "InvoicePayed";
             this.InvoicePayed.ReadOnly = true;
+            this.InvoicePayed.Width = 125;
             // 
             // HandleBookingForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(641, 578);
+            this.ClientSize = new System.Drawing.Size(855, 711);
             this.Controls.Add(this.BookingGrid);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "HandleBookingForm";
             this.Text = "HandleBookingForm";
             this.Load += new System.EventHandler(this.HandleBookingForm_Load);
